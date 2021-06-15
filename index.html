@@ -1,24 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Clock App</title>
-</head>
-<body>
-  , it's currently
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet"> 
 
-  in
+    <link rel="stylesheet" href="css/styles.css">
 
-  More
-  Less
-
-  Current timezone
-  Day of the year
-  Day of the week
-  Week number
-</body>
+    <title>Clock App</title>
+  </head>
+  <body>
+    <main>
+      <div class="quote">
+        <div class="quote__text">
+          <cite>
+            “The science of operations, as derived from mathematics more especially, is a science of itself, 
+            and has its own abstract truth and value.”
+          </cite>
+          <small class="author">Ada Lovelace</small>
+        </div>
+        <button class="refresh"><img src="assets/desktop/icon-refresh.svg" alt="refresh" width="18px" height="18px"></button>
+      </div>
+      <div class="bottom">
+        <div class="clock">
+          <div class="greeting">
+            <img src="assets/desktop/icon-moon.svg" width="24px" height="24px" alt="icon moon" id="day-night-icon">
+            <span class="less-big">good evening</span>
+            <span class="less-big currently">, it's currently</span>
+          </div>
+          <div class="time">
+            <span class="huge">23:14</span>
+            <span class="timezone">BST</span>
+          </div>
+          <div class="location"> 
+            <span class="big">in london, uk</span>
+          </div>
+        </div>
+        <button id="collapse" class="button collapse"><span>more</span></button>
+      </div>
+    </main>
+    <aside>
+      <div class="section">
+        <div class="info-group">
+          <span class="smaller">current timezone</span>
+          <span class="bigger">Europe/London</span>
+        </div>
+        <div class="info-group">
+          <span class="smaller">day of the year</span>
+          <span class="bigger">295</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="info-group">
+          <span class="smaller">day of the week</span>
+          <span class="bigger">5</span>
+        </div>
+        <div class="info-group">
+          <span class="smaller">week number</span>
+          <span class="bigger">42</span>
+        </div>
+      </div>
+    </aside>
+  </body>
+  <script src="js/collapse.js"></script>
 </html>

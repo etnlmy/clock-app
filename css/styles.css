@@ -1,0 +1,184 @@
+* {
+  border: 0;
+  margin: 0;
+}
+
+:root {
+  --very-dark: hsl(0, 0%, 19%);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow-y: hidden;
+  font-family: 'Inter', sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 22px;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/mobile/bg-image-daytime.jpg) no-repeat left top;
+  background-size: cover;
+}
+
+main {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 26px 40px 26px;
+  transition: margin-top .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+aside {
+  box-sizing: border-box;
+  padding: 48px 26px;
+  min-height: 256px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(5px);
+  color: var(--very-dark);
+}
+
+cite {
+  font-style: normal;
+}
+
+small {
+  font-size: 12px;
+}
+
+.huge {
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 100px;
+  letter-spacing: -2.5px;
+}
+
+.bigger {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.big {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 28px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.less-big {
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.normal {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.smaller {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.button {
+  font-weight: bold;
+}
+
+.refresh {
+  background: none;
+  height: fit-content;
+}
+
+.quote {
+  display: flex;
+}
+
+.quote__text {
+  margin-right: 5px;
+}
+
+.author {
+  display: block;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.greeting {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.greeting img {
+  margin-right: 16px;
+}
+
+.timezone {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 28px;
+  margin-left: 5px;
+}
+
+.time {
+  padding-bottom: 16px;
+}
+
+.currently {
+  display: none;
+}
+
+button.collapse {
+  margin-top: 48px;
+  padding: 13px 47px 12px 17px;
+  border-radius: 28px;
+  position: relative;
+}
+
+button.collapse span {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 3.75px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+button.collapse::after {
+  content: "";
+  background-image: url("../assets/desktop/icon-arrow-up.svg");
+  background-size: 32px 32px;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  transform: rotate(180deg);
+  transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) .3s .3s;
+}
+
+button.collapse.less::after {
+  transform: rotate(0);
+}
+
+.info-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section:last-child .info-group:last-child {
+  margin-bottom: 0px;
+}
+
