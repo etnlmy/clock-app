@@ -24,18 +24,7 @@
       </div>
       <div class="bottom">
         <div class="clock">
-          <div class="greeting">
-            <img src="assets/desktop/icon-moon.svg" width="24px" height="24px" alt="icon moon" id="day-night-icon">
-            <span class="less-big">good evening</span>
-            <span class="less-big currently">, it's currently</span>
-          </div>
-          <div class="time">
-            <span class="huge">23:14</span>
-            <span class="timezone">BST</span>
-          </div>
-          <div class="location"> 
-            <span class="big">in london, uk</span>
-          </div>
+
         </div>
         <button id="collapse" class="button collapse"><span>more</span></button>
       </div>
@@ -44,25 +33,27 @@
       <div class="section">
         <div class="info-group">
           <span class="smaller">current timezone</span>
-          <span class="bigger">Europe/London</span>
+          <span id="time-zone" class="bigger"></span>
         </div>
         <div class="info-group">
           <span class="smaller">day of the year</span>
-          <span class="bigger">295</span>
+          <span id="day-of-year" class="bigger"></span>
         </div>
       </div>
       <div class="section">
         <div class="info-group">
           <span class="smaller">day of the week</span>
-          <span class="bigger">5</span>
+          <span id="day-of-week" class="bigger"></span>
         </div>
         <div class="info-group">
           <span class="smaller">week number</span>
-          <span class="bigger">42</span>
+          <span id="week-number" class="bigger"></span>
         </div>
       </div>
     </aside>
   </body>
   <script src="js/collapse.js"></script>
   <script src="js/quotes.js"></script>
+  <script src="js/clock.js"></script>
+
 </html>

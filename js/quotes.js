@@ -1,24 +1,23 @@
-const API_URL = "https://api.quotable.io/random";
-const ROTATING = "rotating";
-const HIDDEN = "hidden";
-
-async function fetchRandomQuote() {
-  const response = await fetch(API_URL);
-  console.log(response);
-  if (!response.ok) throw new Error('Something went wrong');
-  const data = await response.json();
-  return {
-    quote: data.content,
-    author: data.author
-  };
-}
-
 function quotes({
   refreshButton,
   quoteElement,
   authorElement,
   errorElement
 }) {
+
+  const API_URL = "https://api.quotable.io/random";
+  const ROTATING = "rotating";
+  const HIDDEN = "hidden";
+
+  async function fetchRandomQuote() {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error('Could not fetch a new quote');
+    const data = await response.json();
+    return {
+      quote: data.content,
+      author: data.author
+    };
+  }
 
   const displayQuote = (data) => {
     quoteElement.textContent = `“${data.quote}”`;
@@ -52,5 +51,5 @@ quotes({
   refreshButton: document.querySelector("button.refresh"),
   quoteElement: document.getElementsByTagName("cite")[0],
   authorElement: document.getElementsByTagName("small")[0],
-  errorElement: document.querySelector("p.error")
+  errorElement: document.querySelector(".quote p.error")
 });
