@@ -15,7 +15,7 @@ function collapse({
     collapsed = !collapsed;
     span.innerText = collapsed ? LESS : MORE;
     main.style.marginTop = collapsed ? `-${asideHeight}px` : "0";
-    collapsed ? button.classList.add(LESS) : button.classList.remove(LESS);
+    button.classList.toggle(LESS);
   });
 }
 
