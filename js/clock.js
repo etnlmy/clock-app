@@ -41,6 +41,13 @@ function clock({
     else return "Good evening";
   }
 
+  function setTheme(isDayTime) {
+    const image = isDayTime ? "daytime" : "nighttime";
+    document.getElementsByTagName("body")[0].style.background = 
+      `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/mobile/bg-image-${image}.jpg) no-repeat left top`;
+    if (!isDayTime) document.getElementsByTagName("aside")[0].classList.add("dark");
+  }
+
   const formatHoursAndMinutes = (hours, minutes) => 
     `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
 
@@ -72,6 +79,7 @@ function clock({
   Promise
     .all([fetchTimeData(), fetchLocation()])
     .then(([timeData, location]) => {
+      setTheme(timeData.isDayTime);
       renderClock({ clockContainer, timeData, location });
       timeZoneElement.textContent = timeData.timeZone;
       dayOfTheYearElement.textContent = timeData.dayOfTheYear;
