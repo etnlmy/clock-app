@@ -5,6 +5,10 @@
 
 :root {
   --very-dark: hsl(0, 0%, 19%);
+  --rotate-start: rotate(0deg);
+  --rotate-end: rotate(360deg);
+  --rotating-animation: rotating 2s linear infinite;
+  --cubic-bezier: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 html {
@@ -30,7 +34,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   padding: 32px 26px 40px 26px;
-  transition: margin-top .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: margin-top .4s var(--cubic-bezier);
 }
 
 aside {
@@ -179,7 +183,7 @@ button.collapse::after {
   top: 4px;
   right: 4px;
   transform: rotate(180deg);
-  transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) .3s .3s;
+  transition: transform var(--cubic-bezier) .3s .3s;
 }
 
 button.collapse.less::after {
@@ -196,40 +200,40 @@ button.collapse.less::after {
   margin-bottom: 0px;
 }
 
-@-webkit-keyframes rotating /* Safari and Chrome */ {
+@-webkit-keyframes rotating {
   from {
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -webkit-transform: var(--rotate-start);
+    -o-transform: var(--rotate-start);
+    transform: var(--rotate-start);
   }
   to {
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: var(--rotate-end);
+    -o-transform: var(--rotate-end);
+    transform: var(--rotate-end);
   }
 }
 @keyframes rotating {
   from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -ms-transform: var(--rotate-start);
+    -moz-transform: var(--rotate-start);
+    -webkit-transform: var(--rotate-start);
+    -o-transform: var(--rotate-start);
+    transform: var(--rotate-start);
   }
   to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -ms-transform: var(--rotate-end);
+    -moz-transform: var(--rotate-end);
+    -webkit-transform: var(--rotate-end);
+    -o-transform: var(--rotate-end);
+    transform: var(--rotate-end);
   }
 }
 
 .rotating {
-  -webkit-animation: rotating 2s linear infinite;
-  -moz-animation: rotating 2s linear infinite;
-  -ms-animation: rotating 2s linear infinite;
-  -o-animation: rotating 2s linear infinite;
-  animation: rotating 2s linear infinite;
+  -webkit-animation: var(--rotating-animation);
+  -moz-animation: var(--rotating-animation);
+  -ms-animation: var(--rotating-animation);
+  -o-animation: var(--rotating-animation);
+  animation: var(--rotating-animation);
 }
 
