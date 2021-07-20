@@ -11,7 +11,7 @@ function renderClock ({ clockContainer, timeData, location, error }) {
         height="24px" 
         alt="icon ${icon}" 
         id="day-night-icon">
-      <span class="less-big">${timeData.greeting}</span>
+      <span class="less-big">${timeData.greeting}, it's currently</span>
       <span class="less-big currently">, it's currently</span>
     </div>
     <div class="time">
@@ -43,8 +43,9 @@ function clock({
 
   function setTheme(isDayTime) {
     const image = isDayTime ? "daytime" : "nighttime";
-    document.getElementsByTagName("body")[0].style.background = 
-      `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/mobile/bg-image-${image}.jpg) no-repeat left top`;
+    const version = window.matchMedia('(max-width: 500px)').matches ? "mobile" : "desktop";
+    const body = document.getElementsByTagName("body")[0];
+    body.style.backgroundImage = `url(./assets/${version}/bg-image-${image}.jpg)`;
     if (!isDayTime) document.getElementsByTagName("aside")[0].classList.add("dark");
   }
 

@@ -23,8 +23,15 @@ body {
   font-size: 12px;
   line-height: 22px;
   color: white;
-  background: black;
+  background-image: none;
+  background-blend-mode: multiply;
+  background-color: rgba(0,0,0,.4);
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 main {
@@ -42,7 +49,7 @@ aside {
   padding: 48px 26px;
   min-height: 256px;
   background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   color: var(--very-dark);
 }
 
@@ -235,5 +242,104 @@ button.collapse.less::after {
   -ms-animation: var(--rotating-animation);
   -o-animation: var(--rotating-animation);
   animation: var(--rotating-animation);
+}
+
+
+@media (min-width: 500px) {
+  main {
+    padding: 64px;
+  }
+
+  .quote {
+    max-width: 573px;
+    padding-top: 16px;
+  }
+
+  cite, small {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .author {
+    margin-top: 13px;
+  }
+
+  .less-big {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 3.6px;
+  }
+
+  .huge {
+    font-size: 175px;
+    line-height: 175px;
+    letter-spacing: -4.375px;
+  }
+
+  .timezone {
+    font-size: 32px;
+    line-height: 28px;
+  }
+
+  .big {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 3.6px;
+  }
+
+  button.collapse {
+    margin-top: 80px;
+    padding: 15px 47px 13px 21px;
+  }
+
+  button.collapse::after {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+    top: 8px;
+    right: 8px;
+  }
+
+  button.collapse span {
+    padding-right: 13px;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 5px;
+  }
+
+  aside {
+    padding: 0px 0 0 64px;
+    display: flex;
+    justify-content: flex-start;
+    height: 440px;
+    column-gap: 80px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-group {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  
+  .info-group:first-child {
+    margin-bottom: 48px;
+  }
+
+  .smaller {
+    font-size: 13px;
+    line-height: 28px;
+    letter-spacing: 2.6px;
+  }
+
+  .bigger {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
 }
 
