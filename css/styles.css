@@ -78,6 +78,7 @@ small {
 }
 
 .huge {
+  display: inline;
   font-weight: bold;
   font-size: 100px;
   line-height: 100px;

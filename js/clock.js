@@ -7,15 +7,15 @@ function renderClock ({ clockContainer, data, error }) {
   clockContainer.innerHTML = `
     <div class="greeting">
       <img src="assets/desktop/icon-${icon}.svg" 
-        width="24px" 
-        height="24px" 
+        width="24" 
+        height="24" 
         alt="icon ${icon}" 
         id="day-night-icon">
       <span class="less-big">${data.greeting}</span>
       <span class="less-big currently">, it's currently</span>
     </div>
     <div class="time">
-      <span id="time" class="huge">${data.time}</span>
+      <h1 id="time" class="huge">${data.time}</h1>
       <span class="timezone">${data.bst ? 'BST' : ''}</span>
     </div>
     <div class="location"> 
