@@ -43,7 +43,7 @@ function clock({
 
   function setTheme(isDayTime) {
     const image = isDayTime ? "daytime" : "nighttime";
-    const version = window.matchMedia('(max-width: 500px)').matches ? "mobile" : "desktop";
+    const version = window.matchMedia('(max-width: 600px)').matches ? "mobile" : "desktop";
     const body = document.getElementsByTagName("body")[0];
     body.style.backgroundImage = `url(./assets/${version}/bg-image-${image}.jpg)`;
     if (!isDayTime) document.getElementsByTagName("aside")[0].classList.add("dark");
@@ -74,7 +74,7 @@ function clock({
     const response = await fetch(LOCATION_API_URL);
     if (!response.ok) throw new Error('Could not get your location');
     const data = await response.json();
-    return `${data.city}, ${data.country_name}`;
+    return data.city ? `${data.city}, ${data.country_name}` : `${data.country_name}`;
   }
 
   Promise

@@ -17,6 +17,7 @@ html {
 
 body {
   height: 100%;
+  min-width: 320px;
   overflow-y: hidden;
   font-family: 'Inter', sans-serif;
   font-weight: normal;
@@ -142,6 +143,7 @@ small {
 
 .greeting {
   display: flex;
+  align-items: center;
   margin-bottom: 16px;
 }
 
@@ -245,7 +247,7 @@ button.collapse.less::after {
 }
 
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
   main {
     padding: 64px;
   }
@@ -340,6 +342,83 @@ button.collapse.less::after {
     font-size: 40px;
     line-height: 48px;
   }
+}
 
+@media (min-width: 1100px) {
+
+  .less-big {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 4px;
+  }
+
+  .big {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 4.8px;
+  }
+
+  .huge {
+    font-size: 200px;
+    line-height: 200px;
+    letter-spacing: -5px;
+  }
+
+  .smaller {
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 3px;
+  }
+
+  .bigger {
+    font-size: 56px;
+    line-height: 68px;
+  }
+
+  .timezone {
+    font-size: 40px;
+    line-height: 28px;
+  }
+
+  .refresh {
+    padding-top: 5px;
+  }
+
+  main {
+    padding: 56px 165px 56px 165px;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  button.collapse {
+    height: 56px;
+  }
+
+  button.collapse span {
+    padding-right: 10px;
+  }
+
+  aside {
+    column-gap: 0px;
+    padding: 0px 71px;
+  }
+
+  .section {
+    width: 50%;
+    padding-left: 94px;
+    margin: 74px 0px;
+  }
+
+  .section:last-child {
+    border-left: 1px solid hsla(0, 0%, 19%, .25);
+  }
+
+  .info-group > .smaller {
+    margin-bottom: 9px;
+  }
 }
 
