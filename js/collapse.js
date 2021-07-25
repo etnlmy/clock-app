@@ -8,14 +8,22 @@ function collapse({
   const MORE = "more";
 
   const span = button.querySelector("span");
-  const asideHeight = aside.clientHeight;
-  let collapsed = false;
-
+  let collapsed = true;
+  
   button.addEventListener("click", () => {
     collapsed = !collapsed;
     span.innerText = collapsed ? LESS : MORE;
-    main.style.marginTop = collapsed ? `-${asideHeight}px` : "0";
     button.classList.toggle(LESS);
+    
+    if (!collapsed) {
+      aside.style.display = "block";
+      const asideHeight = aside.clientHeight;
+      main.style.marginTop = `-${asideHeight}px`;
+    }
+    else {
+      main.style.marginTop = "0";
+      setTimeout(() => aside.style.display = "none", 300)
+    }
   });
 }
 

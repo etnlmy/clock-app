@@ -52,6 +52,7 @@ aside {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(10px);
   color: var(--very-dark);
+  display: none;
 }
 
 aside.dark {
@@ -167,6 +168,7 @@ small {
 }
 
 button.collapse {
+  background-color: white;
   margin-top: 48px;
   padding: 13px 47px 12px 17px;
   border-radius: 28px;
