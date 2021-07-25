@@ -53,6 +53,7 @@ aside {
   backdrop-filter: blur(10px);
   color: var(--very-dark);
   display: none;
+  flex-direction: column;
 }
 
 aside.dark {
@@ -313,7 +314,7 @@ button.collapse.less::after {
 
   aside {
     padding: 0px 0 0 64px;
-    display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     height: 440px;
     column-gap: 80px;

@@ -62,7 +62,6 @@ function clock({
     const response = await fetch(TIME_API_URL);
     if (!response.ok) throw new Error('Could not fetch the time');
     const { data } = await response.json();
-    console.log(data);
     const date = new Date(data.datetime.date_time);
     const hours = date.getHours();
     return {

@@ -16,7 +16,7 @@ function collapse({
     button.classList.toggle(LESS);
     
     if (!collapsed) {
-      aside.style.display = "block";
+      aside.style.display = "flex";
       const asideHeight = aside.clientHeight;
       main.style.marginTop = `-${asideHeight}px`;
     }
