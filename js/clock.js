@@ -32,7 +32,7 @@ function clock({
   clockContainer
 }) {
 
-  const TIME_API_URL = "https://worldtimeapi.org/api/ip";
+  const TIME_API_URL = "/worldtimeapi/ip";
   const LOCATION_API_URL = "https://freegeoip.app/json/";
 
   function getGreeting(hours) {
