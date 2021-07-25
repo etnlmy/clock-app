@@ -1,9 +1,9 @@
-function renderClock ({ clockContainer, timeData, location, error }) {
+function renderClock ({ clockContainer, data, error }) {
   if (error) {
     clockContainer.innerHTML = `<p class="error">${error}</p>`;
     return;
   }
-  const icon = timeData.isDayTime ? 'sun' : 'moon';
+  const icon = data.isDayTime ? 'sun' : 'moon';
   clockContainer.innerHTML = `
     <div class="greeting">
       <img src="assets/desktop/icon-${icon}.svg" 
@@ -11,15 +11,15 @@ function renderClock ({ clockContainer, timeData, location, error }) {
         height="24px" 
         alt="icon ${icon}" 
         id="day-night-icon">
-      <span class="less-big">${timeData.greeting}, it's currently</span>
+      <span class="less-big">${data.greeting}, it's currently</span>
       <span class="less-big currently">, it's currently</span>
     </div>
     <div class="time">
-      <span id="time" class="huge">${timeData.time}</span>
-      <span class="timezone">${timeData.bst ? 'BST' : ''}</span>
+      <span id="time" class="huge">${data.time}</span>
+      <span class="timezone">${data.bst ? 'BST' : ''}</span>
     </div>
     <div class="location"> 
-      <span class="big">in ${location}</span>
+      <span class="big">in ${data.location}</span>
     </div>
   `;
 }
@@ -32,13 +32,19 @@ function clock({
   clockContainer
 }) {
 
-  const TIME_API_URL = "/worldtimeapi/ip";
-  const LOCATION_API_URL = "https://freegeoip.app/json/";
+  const TIME_API_URL = "https://timezoneapi.io/api/ip/?token=aGBpamkOwzjCMkOpRmzb";
 
   function getGreeting(hours) {
     if (hours >= 5 && hours <= 11) return "Good morning";
     else if (hours >= 12 && hours <= 17) return "Good afternoon";
     else return "Good evening";
+  }
+
+  function getDayOfTheYear(now) {
+    var start = new Date(now.getFullYear(), 0, 0);
+    var diff = now - start;
+    var oneDay = 1000 * 60 * 60 * 24;
+    return Math.floor(diff / oneDay);
   }
 
   function setTheme(isDayTime) {
@@ -52,46 +58,42 @@ function clock({
   const formatHoursAndMinutes = (hours, minutes) => 
     `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
 
-  async function fetchTimeData() {
+  async function fetchTimeAndLocation() {
     const response = await fetch(TIME_API_URL);
     if (!response.ok) throw new Error('Could not fetch the time');
-    const data = await response.json();
-    const date = new Date(data.datetime);
+    const { data } = await response.json();
+    console.log(data);
+    const date = new Date(data.datetime.date_time);
     const hours = date.getHours();
     return {
-      timeZone: data.timezone,
-      dayOfTheYear: data.day_of_year,
-      dayOfTheWeek: data.day_of_week,
-      weekNumber: data.week_number,
+      timeZone: data.timezone.id,
+      dayOfTheYear: getDayOfTheYear(date),
+      dayOfTheWeek: date.getDay(),
+      weekNumber: data.datetime.week,
       time: formatHoursAndMinutes(hours, date.getMinutes()),
-      bst: data.dst,
+      bst: data.datetime.dst,
       greeting: getGreeting(hours),
-      isDayTime: hours >= 5 && hours <= 17
+      isDayTime: hours >= 5 && hours <= 17,
+      location: `${data.city}, ${data.country}`
     };
   }
 
-  async function fetchLocation() {
-    const response = await fetch(LOCATION_API_URL);
-    if (!response.ok) throw new Error('Could not get your location');
-    const data = await response.json();
-    return data.city ? `${data.city}, ${data.country_name}` : `${data.country_name}`;
-  }
-
-  Promise
-    .all([fetchTimeData(), fetchLocation()])
-    .then(([timeData, location]) => {
-      setTheme(timeData.isDayTime);
-      renderClock({ clockContainer, timeData, location });
-      timeZoneElement.textContent = timeData.timeZone;
-      dayOfTheYearElement.textContent = timeData.dayOfTheYear;
-      dayOfTheWeekElement.textContent = timeData.dayOfTheWeek;
-      weekNumberElement.textContent = timeData.weekNumber;
+  fetchTimeAndLocation()
+    .then((data) => {
+      setTheme(data.isDayTime);
+      renderClock({ clockContainer, data });
+      timeZoneElement.textContent = data.timeZone;
+      dayOfTheYearElement.textContent = data.dayOfTheYear;
+      dayOfTheWeekElement.textContent = data.dayOfTheWeek;
+      weekNumberElement.textContent = data.weekNumber;
     })
     .catch(error => renderClock({ clockContainer, error }));
 
   window.setInterval(() => {
     const now = new Date();
-    document.getElementById("time").innerText = formatHoursAndMinutes(now.getHours(), now.getMinutes());
+    const timeElt = document.getElementById("time");
+    if (timeElt) 
+      timeElt.innerText = formatHoursAndMinutes(now.getHours(), now.getMinutes());
   }, 1000);
 
 }
