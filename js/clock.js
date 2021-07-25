@@ -11,7 +11,7 @@ function renderClock ({ clockContainer, data, error }) {
         height="24px" 
         alt="icon ${icon}" 
         id="day-night-icon">
-      <span class="less-big">${data.greeting}, it's currently</span>
+      <span class="less-big">${data.greeting}</span>
       <span class="less-big currently">, it's currently</span>
     </div>
     <div class="time">
@@ -70,7 +70,7 @@ function clock({
       dayOfTheWeek: date.getDay(),
       weekNumber: data.datetime.week,
       time: formatHoursAndMinutes(hours, date.getMinutes()),
-      bst: data.datetime.dst,
+      bst: data.datetime.dst === "true",
       greeting: getGreeting(hours),
       isDayTime: hours >= 5 && hours <= 17,
       location: `${data.city}, ${data.country}`

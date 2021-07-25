@@ -126,11 +126,13 @@ small {
 .refresh {
   background: none;
   height: fit-content;
+  padding-top: 5px;
 }
 
 .quote {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .quote__text {
@@ -292,6 +294,10 @@ button.collapse.less::after {
     letter-spacing: 3.6px;
   }
 
+  .currently {
+    display: inline;
+  }
+
   button.collapse {
     margin-top: 80px;
     padding: 15px 47px 13px 21px;
@@ -381,10 +387,6 @@ button.collapse.less::after {
   .timezone {
     font-size: 40px;
     line-height: 28px;
-  }
-
-  .refresh {
-    padding-top: 5px;
   }
 
   main {
