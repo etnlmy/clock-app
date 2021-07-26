@@ -12,7 +12,7 @@ function collapse({
   
   button.addEventListener("click", () => {
     collapsed = !collapsed;
-    span.innerText = collapsed ? LESS : MORE;
+    span.innerText = collapsed ? MORE : LESS;
     button.classList.toggle(LESS);
     
     if (!collapsed) {

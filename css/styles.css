@@ -18,6 +18,7 @@ html {
 body {
   height: 100%;
   min-width: 320px;
+  min-height: 700px;
   overflow-y: hidden;
   font-family: 'Inter', sans-serif;
   font-weight: normal;
@@ -253,7 +254,7 @@ button.collapse.less::after {
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   main {
     padding: 64px;
   }
@@ -300,6 +301,7 @@ button.collapse.less::after {
   }
 
   button.collapse {
+    cursor: pointer;
     margin-top: 80px;
     padding: 15px 47px 13px 21px;
   }
@@ -352,9 +354,13 @@ button.collapse.less::after {
     font-size: 40px;
     line-height: 48px;
   }
+
+  .refresh {
+    cursor: pointer;
+  }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1140px) {
 
   .less-big {
     font-size: 20px;

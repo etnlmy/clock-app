@@ -16,7 +16,7 @@ function renderClock ({ clockContainer, data, error }) {
     </div>
     <div class="time">
       <h1 id="time" class="huge">${data.time}</h1>
-      <span class="timezone">${data.bst ? 'BST' : ''}</span>
+      <span class="timezone">${data.tzOffset}</span>
     </div>
     <div class="location"> 
       <span class="big">in ${data.location}</span>
@@ -62,15 +62,16 @@ function clock({
     const response = await fetch(TIME_API_URL);
     if (!response.ok) throw new Error('Could not fetch the time');
     const { data } = await response.json();
+    console.log(data)
     const date = new Date(data.datetime.date_time);
     const hours = date.getHours();
     return {
       timeZone: data.timezone.id,
       dayOfTheYear: getDayOfTheYear(date),
-      dayOfTheWeek: date.getDay(),
+      dayOfTheWeek: date.getDay() + 1,
       weekNumber: data.datetime.week,
       time: formatHoursAndMinutes(hours, date.getMinutes()),
-      bst: data.datetime.dst === "true",
+      tzOffset: data.datetime.offset_tzab,
       greeting: getGreeting(hours),
       isDayTime: hours >= 5 && hours <= 17,
       location: `${data.city}, ${data.country}`
